@@ -1,30 +1,35 @@
 
-    <select [(ngModel)]="actor_id" (ngModelChange)=" changeActor($event)">
-        <option *ngFor="let actor of actors"
-            [value]="actor.actorId">
-          {{actor.firstName}} {{actor.lastName}}: {{actor_id}}
-        </option>
-    </select>
-   <select [(ngModel)]="film_id" (ngModelChange)=" changefilm($event)">
-        <option *ngFor="let film of films"
-            [value]="film.filmId">
-          {{film.title}} {{film_id}}
-        </option>
-    </select>
+<select [(ngModel)]="actor_id" (ngModelChange)=" changeActor($event)">
+  @for (actor of actors; track actor) {
+    <option
+      [value]="actor.actorId">
+      {{actor.firstName}} {{actor.lastName}}: {{actor_id}}
+    </option>
+  }
+</select>
+<select [(ngModel)]="film_id" (ngModelChange)=" changefilm($event)">
+  @for (film of films; track film) {
+    <option
+      [value]="film.filmId">
+      {{film.title}} {{film_id}}
+    </option>
+  }
+</select>
 
-    <div *ngIf="filmContent.length > 0">
-        <h3>title: {{filmContent.title}}</h3><br/>
-      <i>description: {{filmContent.description}}</i><br/>     
-      <p>rating: {{filmContent.rating}}</p>
-      <p>releaseYear: {{filmContent.releaseYear}}</p>
-      <p>rentalDuration: {{filmContent.rentalDuration}}</p>
-      <p>rentalRate: {{filmContent.rentalRate}}</p>
-      <p>languageId: {{filmContent.language.name}}</p>
-      <p>originalLanguageId: {{filmContent.originalLanguage}}</p>
-    </div>
- {{actor_id}}<br/>
-    <app-formactor [actor_id]="actor_id"
-    (newItemEvent)="addItem($event)"
-    ></app-formactor>
+@if (filmContent.length > 0) {
+  <div>
+    <h3>title: {{filmContent.title}}</h3><br/>
+    <i>description: {{filmContent.description}}</i><br/>
+    <p>rating: {{filmContent.rating}}</p>
+    <p>releaseYear: {{filmContent.releaseYear}}</p>
+    <p>rentalDuration: {{filmContent.rentalDuration}}</p>
+    <p>rentalRate: {{filmContent.rentalRate}}</p>
+    <p>languageId: {{filmContent.language.name}}</p>
+    <p>originalLanguageId: {{filmContent.originalLanguage}}</p>
+  </div>
+}
+{{actor_id}}<br/>
+<app-formactor [actor_id]="actor_id"
+  (newItemEvent)="addItem($event)"
+></app-formactor>
 
-   
