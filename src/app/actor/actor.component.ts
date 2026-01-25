@@ -3,9 +3,10 @@ import { filmactorService } from '../datasource.service';
 import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-actor',
-  templateUrl: './actor.component.html',
-  styleUrls: ['./actor.component.css']
+    selector: 'app-actor',
+    templateUrl: './actor.component.html',
+    styleUrls: ['./actor.component.css'],
+    standalone: false
 })
 export class ActorComponent {
   actors:any = [];
