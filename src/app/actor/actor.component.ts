@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter }  from '@angular/core';
 import { filmactorService } from '../datasource.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import { Actor } from '../actor';
 
 @Component({
     selector: 'app-actor',
@@ -11,6 +12,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class ActorComponent {
   actors:any = [];
   actor_id:any = 1;
+  actor:Actor = {firstName: '', lastName: '', actorId: 0};
   films:any = [];
   film_id:any = 1;
   filmresult:any = [];
@@ -22,10 +24,6 @@ export class ActorComponent {
 
   }
 
-    addItem(newItem: number) {
-    alert(newItem);
-  }
-
 
   ngOnInit(): void {
      this.getActors();  
@@ -33,7 +31,9 @@ export class ActorComponent {
   }
 
   getActors() {
-    this.filmactorService.getActors().subscribe((res : any)=>{
+    this.filmactorService.getActors().subscribe((res : any)=>{  
+      this.actors=res.filter((actor:  Actor) => actor.actorId == this.actor_id);
+      this.actor=this.actors[0];
       this.actors = res;
       this.getfilms()
     });
@@ -47,7 +47,6 @@ export class ActorComponent {
       this.films = res;      
       this.filmContent=this.films.filter((film:  any) => film.filmId == this.film_id);
       this.filmContent=this.filmContent[0];
-      console.log(this.filmContent.language);
       
     });
   }

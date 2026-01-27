@@ -1,5 +1,39 @@
-
-
-{{actor_id}}
-
-<button type="button" (click)="addNewItem(actor_id)">Add to parent's list</button>
+<form [formGroup]="actordata" (ngSubmit)="saveActorData()">
+    <input type="hidden" formControlName="actorId">
+   <div style="float:left;">
+    <label for="firstName">
+     First Name
+    </label>
+    <input id="firstName" type="text" formControlName="firstName">
+  </div>
+    <div style="float:left;">
+    <label for="lastName">
+      Last Name
+    </label>
+    <input id="lastName" type="text" formControlName="lastName">
+  </div>
+  <button class="button" type="submit">SAVE</button>
+</form>
+<form [formGroup]="filmformsdata" (ngSubmit)="saveActorData()">
+<select formControlName="filmsform" multiple style="height:400px;;float:left;">
+  @for (film of films; track film) {
+    <option
+      [value]="film.filmId">
+      {{film.title}}
+    </option>
+  }
+</select>
+<div style="float:left; width:50px;">
+  <button type="button" (click)="addFilmsToActor()">==&gt;</button>
+  <br><br>
+  <button type="button" (click)="addFilmsToActor()">&lt;==</button>
+</div>
+<select formControlName="filmsformactor" multiple style="height:400px;;float:left;">
+  @for (film of filmsFromActor; track film) {
+    <option
+      [value]="film.filmId">
+      {{film.title}}
+    </option>
+  }
+</select>
+</form>

@@ -1,17 +1,17 @@
 
-<select [(ngModel)]="actor_id" (ngModelChange)=" changeActor($event)">
+<select [(ngModel)]="actor_id" (ngModelChange)="changeActor($event)">
   @for (actor of actors; track actor) {
     <option
       [value]="actor.actorId">
-      {{actor.firstName}} {{actor.lastName}}: {{actor_id}}
+      {{actor.firstName}} {{actor.lastName}}
     </option>
   }
 </select>
-<select [(ngModel)]="film_id" (ngModelChange)=" changefilm($event)">
+<select [(ngModel)]="film_id" (ngModelChange)="changefilm($event)">
   @for (film of films; track film) {
     <option
       [value]="film.filmId">
-      {{film.title}} {{film_id}}
+      {{film.title}}
     </option>
   }
 </select>
@@ -28,8 +28,7 @@
     <p>originalLanguageId: {{filmContent.originalLanguage}}</p>
   </div>
 }
-{{actor_id}}<br/>
-<app-formactor [actor_id]="actor_id"
-  (newItemEvent)="addItem($event)"
-></app-formactor>
 
+<app-formactor
+  [setActor]="actor"
+></app-formactor>

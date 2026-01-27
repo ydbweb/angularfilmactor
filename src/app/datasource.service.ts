@@ -17,5 +17,19 @@ export class filmactorService {
     return this.httpClient.get(this.baseUrl+'/api/actors/actorid/'+actor_id);
   }
 
+  getAllFilms() {
+    return this.httpClient.get(this.baseUrl+'/api/films/all');
+  }  
+
+  putActor(actorid : number, res : any) {
+    console.log("Updating actor with ID:", actorid, "with data:", res);
+    return this.httpClient.put(this.baseUrl+'/api/actors/'+actorid, res);
+  }
+
+  putActorFilms(actorid : number, res : any) {
+    console.log("Updating actor with ID:", actorid, "with data:", res);
+    return this.httpClient.put(this.baseUrl+'/api/actors/addtoactor/'+actorid, res);
+  }  
+
 
 }
