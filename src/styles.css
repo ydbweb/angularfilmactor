@@ -1,6 +1,4 @@
-html {
 
-}
 
 body {
   margin: 0;
@@ -60,8 +58,6 @@ ul.pagination {
   margin:0;
 }
 
-.content-wrap {
-}
 
 footer {
   position: absolute;
