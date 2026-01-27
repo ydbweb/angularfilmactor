@@ -1,4 +1,4 @@
-Angular actors app with spring boot backend
+Angular actors with movies app with spring boot backend
 
 backend at following url
 
